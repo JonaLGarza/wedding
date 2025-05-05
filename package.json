@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "chromatic --project-token=chpt_2d72bb11b2d35e3"
+    "chromatic": "chromatic --project-token=chpt_5559a6e9a16f844"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
