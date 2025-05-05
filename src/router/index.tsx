@@ -4,6 +4,7 @@ import MainLayout from "../layout/MainLayout";
 import { LazyWrapper } from "../components/atoms/LazyWrapper/LazyWrapper";
 
 const HomePage = lazy(() => import("../pages/Home"));
+const EditRSVPPage = lazy(() => import("../pages/EditRSVP"));
 const FallbackMessage = lazy(() => import("../components/molecules/FallBackMessage/FallBackMessage"));
 
 export const router = createBrowserRouter([
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
         errorElement: <FallbackMessage />,
         children: [
           { index: true, element: <HomePage /> },
+          { path: "rsvp/edit/:code", element: <EditRSVPPage /> },
         ],
       },
     ],
