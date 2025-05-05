@@ -2,7 +2,7 @@ name: Deploy static content to GitHub Pages
 
 on:
   push:
-    branches: ['main'] # or your preferred branch
+    branches: ['master'] # or your preferred branch
   workflow_dispatch:
 
 permissions:
