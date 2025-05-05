@@ -17,7 +17,7 @@ const router = createMemoryRouter([
   {
     path: "/",
     element: <LazyWrapper />, // The suspense fallback will show while Outlet resolves
-    children: [{ index: true, element: <div>Hello World (Lazy loaded)</div> }],
+    children: [{ index: true, element: <div>(Lazy loaded) Lazy wrapper component</div> }],
   },
 ]);
 
