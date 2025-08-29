@@ -3,17 +3,15 @@ import WelcomeHeader from "../components/molecules/WelcomeHeader/WelcomeHeader";
 import EventDetails from "../components/organisms/EventDetails/EventDetails";
 import RSVPForm, { RSVPFormData } from "../components/organisms/RSVPForm/RSVPForm";
 import Confirmation from "../components/organisms/Confirmation/Confirmation";
-import AnimatedDoorIntro from "../components/ui/AnimatedDoorIntro";
 import { Helmet } from 'react-helmet-async';
 import { motion } from "framer-motion";
 
 // You would replace this with your actual couple image
-const coupleImage = "https://scontent.fntr10-1.fna.fbcdn.net/v/t39.30808-6/475702217_9183062895141543_8348098127693293811_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=JDkQH1sQsh8Q7kNvwEELLPk&_nc_oc=AdmrR9ZyBYCg11s8VresxRoNHtgkdZxuRFDYaiPErbUojoGdwCc9jPrjBY18Kc72hCC06oOlMsaFz4ho5BPKyhhh&_nc_zt=23&_nc_ht=scontent.fntr10-1.fna&_nc_gid=imp1UzqteftGM_AUnkGktA&oh=00_AfGP4wuDOP-7QeAf-0MNFUy3IKhHeugzghXe4qFoFyXVtA&oe=681EC21A";
+const coupleImage = "https://scontent.fntr10-1.fna.fbcdn.net/v/t39.30808-6/499197807_23971003055920950_6816323037988632063_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFJtI_tc7QWckmmvsEV6f7q2ms7zJ_kZaraazvMn-RlqjrzzuAz6rN-xaEpFoe9pV0PKlNmqrNg5wPoX_eVQbP7&_nc_ohc=92J1xudvC18Q7kNvwFmXlhz&_nc_oc=Adki3V4cvq4IvZ4w6XH5V3dmlghY3tevC0zokLiUdMznRqVELMPp05hMD87Qh1Jr6bWuF1lwQg7mebrdstmX7XcU&_nc_zt=23&_nc_ht=scontent.fntr10-1.fna&_nc_gid=UGUX8CLGxVkbTZgNlCtvMQ&oh=00_AfWeYMlG3p6pIRJma16XjAIV7U7x9Os5PK51BWor8R4ENQ&oe=68B747CE";
 
 const HomePage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState<RSVPFormData | null>(null);
-  const [showIntro, setShowIntro] = useState(true);
   
   const handleSubmit = (data: RSVPFormData) => {
     setFormData(data);
@@ -24,10 +22,6 @@ const HomePage = () => {
   
   const handleEdit = () => {
     setFormSubmitted(false);
-  };
-
-  const handleIntroComplete = () => {
-    setShowIntro(false);
   };
   
   return (
@@ -40,13 +34,10 @@ const HomePage = () => {
         />
       </Helmet>
 
-      {/* Door Intro Animation */}
-      {showIntro && <AnimatedDoorIntro onComplete={handleIntroComplete} />}
-
       {/* Main Content - Will be visible after intro or immediately if intro is disabled */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: !showIntro ? 1 : 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
         className="w-full"
       >
