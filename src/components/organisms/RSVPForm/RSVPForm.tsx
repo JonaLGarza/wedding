@@ -6,6 +6,7 @@ import { Select } from "../../atoms/Select/Select";
 import FormField from "../../molecules/FormField/FormField";
 import RadioGroup from "../../molecules/RadioGroup/RadioGroup";
 import Heading from "../../atoms/Heading/Heading";
+import WeatherWidget from "../../atoms/WeatherWidget/WeatherWidget";
 
 interface RSVPFormProps {
   onSubmit: (formData: RSVPFormData) => void;
@@ -164,6 +165,19 @@ export const RSVPForm = ({
           ENVIAR
         </Button>
       </form>
+      
+      {/* Widget del Clima */}
+      <div className="mt-12">
+        <div className="text-center mb-6">
+          <Heading level={3} className="text-[var(--brand-brown)]">
+            Clima para el Gran Día
+          </Heading>
+          <p className="text-[var(--muted-fg)] text-sm">
+            Revisa el pronóstico del clima para planificar tu asistencia
+          </p>
+        </div>
+        <WeatherWidget className="max-w-4xl mx-auto" />
+      </div>
     </div>
   );
 };
