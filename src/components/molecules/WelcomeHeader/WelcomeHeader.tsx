@@ -18,9 +18,9 @@ export const WelcomeHeader = ({
 }: WelcomeHeaderProps) => {
   return (
     <div className={cn("text-center space-y-6", className)} {...props}>
-      <Logo className="mx-auto" />
+      <Logo className="mx-auto uppercase tracking-widest font-viaoda" />
       
-      <Heading level={1} className="font-serif">{coupleNames}</Heading>
+      <Heading level={1} className="font-script">{coupleNames}</Heading>
       
       {imageSrc && (
         <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden rounded-lg">
