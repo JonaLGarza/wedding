@@ -29,39 +29,37 @@ export const Confirmation = ({
       </div>
       
       <Heading level={2}>
-        {isAttending ? "Thank You For Your RSVP!" : "We'll Miss You!"}
+        {isAttending ? "¡Gracias por tu RSVP!" : "¡Te extrañaremos!"}
       </Heading>
       
       <p className="text-lg text-gray-700">
         {isAttending
-          ? `We're excited to celebrate with you, ${data.name}!`
-          : `We're sorry you can't make it, ${data.name}. You'll be missed!`}
+          ? `¡Nos emociona celebrar contigo, ${data.name}!`
+          : `Lamentamos que no puedas venir, ${data.name}. ¡Te extrañaremos!`}
       </p>
       
       {isAttending && (
         <div className="mt-4 space-y-4 bg-gray-50 p-6 rounded-lg text-left">
           <div>
-            <h3 className="font-medium">Number of Guests:</h3>
+            <h3 className="font-medium">Número de invitados:</h3>
             <p>{data.guestCount}</p>
           </div>
           
-          {data.mealPreference && (
-            <div>
-              <h3 className="font-medium">Meal Preference:</h3>
-              <p className="capitalize">{data.mealPreference}</p>
-            </div>
-          )}
+          <div>
+            <h3 className="font-medium">Teléfono:</h3>
+            <p>{data.phone}</p>
+          </div>
         </div>
       )}
       
       <div className="mt-8">
         <Button onClick={onEdit} variant="outline">
-          Edit Your RSVP
+          Editar tu RSVP
         </Button>
       </div>
       
       <p className="text-sm text-gray-500 mt-4">
-        A confirmation has been sent to {data.email}
+        Se ha enviado una confirmación a tu teléfono
       </p>
     </div>
   );

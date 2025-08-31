@@ -26,10 +26,9 @@ const EditRSVPPage = () => {
         if (code === "demo") {
           const mockData: RSVPFormData = {
             name: "John Smith",
-            email: "john@example.com",
+            phone: "555-0123",
             attending: "yes",
             guestCount: 2,
-            mealPreference: "fish",
           };
           setFormData(mockData);
         } else {

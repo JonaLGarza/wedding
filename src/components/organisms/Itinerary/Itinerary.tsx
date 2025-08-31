@@ -1,8 +1,7 @@
 import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
-import AddressBlock from "../../molecules/AddressBlock/AddressBlock";
-import { Calendar, Shirt, Clock, MapPin, Map } from "lucide-react";
+import { Clock, MapPin, Map } from "lucide-react";
 
 interface ItineraryItem {
   title: string;
@@ -12,39 +11,21 @@ interface ItineraryItem {
   mapUrl?: string;
 }
 
-interface EventDetailsProps extends HTMLAttributes<HTMLDivElement> {
-  title: string;
-  date: string;
-  ceremonyAddress: string;
-  receptionAddress: string;
-  dressCode: string;
-  itineraryItems: ItineraryItem[];
+interface ItineraryProps extends HTMLAttributes<HTMLDivElement> {
+  items: ItineraryItem[];
 }
 
-export const EventDetails = ({
-  title,
-  date,
-  ceremonyAddress,
-  receptionAddress,
-  dressCode,
-  itineraryItems,
+export const Itinerary = ({
+  items,
   className,
   ...props
-}: EventDetailsProps) => {
+}: ItineraryProps) => {
   return (
     <div className={cn("space-y-8", className)} {...props}>
-      <Heading level={2} className="text-center">{title}</Heading>
+      <Heading level={2} className="text-center">Itinerario</Heading>
       
-      <div className="text-center max-w-2xl mx-auto mb-8">
-        <p className="text-lg text-gray-700">
-          A continuación encontrarás el horario y ubicación de los eventos de nuestra boda, 
-          así como mapas interactivos para que te sea más fácil llegar a cada lugar.
-        </p>
-      </div>
-      
-      {/* Itinerary Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {itineraryItems.map((item, index) => (
+        {items.map((item, index) => (
           <div
             key={index}
             className="bg-white rounded-lg shadow-md p-6 border-l-4 border-primary"
@@ -111,21 +92,8 @@ export const EventDetails = ({
           </div>
         ))}
       </div>
-      
-      {/* Date and Dress Code Section */}
-      <div className="text-center space-y-6">
-        <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full">
-          <Calendar className="h-5 w-5 text-primary" />
-          <span className="font-medium text-gray-700">{date}</span>
-        </div>
-        
-        <div className="inline-flex items-center space-x-2 bg-gray-100 px-6 py-3 rounded-full">
-          <Shirt className="h-5 w-5 text-primary" />
-          <span className="font-medium text-gray-700">Código de vestimenta: {dressCode}</span>
-        </div>
-      </div>
     </div>
   );
 };
 
-export default EventDetails; 
+export default Itinerary;

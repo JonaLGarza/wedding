@@ -1,0 +1,7 @@
+export { default as Accommodation } from './Accommodation/Accommodation';
+export { default as Confirmation } from './Confirmation/Confirmation';
+export { default as EventDetails } from './EventDetails/EventDetails';
+export { default as Gallery } from './Gallery/Gallery';
+export { default as Gifts } from './Gifts/Gifts';
+export { default as Itinerary } from './Itinerary/Itinerary';
+export { default as RSVPForm } from './RSVPForm/RSVPForm';
