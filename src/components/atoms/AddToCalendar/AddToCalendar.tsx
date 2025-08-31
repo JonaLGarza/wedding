@@ -191,14 +191,14 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex flex-col items-center gap-2 rounded-xl px-4 py-3 shadow border bg-[var(--brand-ivory)] hover:bg-[var(--brand-beige)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-terracotta)]/50 text-[var(--brand-olive)] border-[var(--brand-terracotta)]/20 transition-all duration-200"
+        className="inline-flex flex-col items-center gap-1 rounded-md px-2.5 py-1.5 shadow-sm border bg-white/80 hover:bg-white/90 focus:outline-none focus:ring-1 focus:ring-[var(--brand-terracotta)]/20 text-[var(--brand-olive)] hover:text-[var(--brand-olive)] border-[var(--brand-terracotta)]/10 hover:border-[var(--brand-terracotta)]/20 transition-all duration-200 backdrop-blur-sm"
       >
         {/* Fecha del evento */}
-        <div className="flex items-center justify-center space-x-2">
-          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="flex items-center justify-center space-x-1">
+          <svg className="h-2.5 w-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <span className="text-sm font-medium">
+          <span className="text-xs font-medium">
             {allDay 
               ? s.toLocaleDateString('es-ES', { 
                   weekday: 'long', 
@@ -220,12 +220,12 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
         </div>
 
         {/* Línea separadora */}
-        <div className="w-full h-px bg-[var(--brand-terracotta)]/30"></div>
+        <div className="w-full h-px bg-[var(--brand-terracotta)]/15"></div>
 
         {/* Acción de añadir a calendario */}
-        <div className="flex items-center gap-2">
-          <span>📅 Añadir a calendario</span>
-          <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden>
+        <div className="flex items-center gap-1">
+          <span className="text-xs">📅 Añadir a calendario</span>
+          <svg width="10" height="10" viewBox="0 0 20 20" aria-hidden>
             <path d="M5.5 7.5l4.5 4.5 4.5-4.5" fill="none" stroke="currentColor" />
           </svg>
         </div>
@@ -235,7 +235,7 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
         <div
           role="menu"
           aria-labelledby={btnId}
-          className="absolute z-[999999] mt-2 w-full rounded-xl border bg-[var(--brand-ivory)] shadow-lg p-2 border-[var(--brand-terracotta)]/20"
+          className="absolute z-[999999] mt-2 w-full rounded-md border bg-white/80 backdrop-blur-sm shadow-sm p-2 border-[var(--brand-terracotta)]/10 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
         >
           <MenuItem
             label="Google Calendar"

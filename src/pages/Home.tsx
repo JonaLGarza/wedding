@@ -90,12 +90,11 @@ const HomePage = () => {
         transition={{ duration: 1.5 }}
         className="w-full"
       >
-        <div className="w-full space-y-24">
+        <div className="w-full space-y-8">
           {/* Home Section */}
           <div ref={setSectionRef("home")}>
             <WelcomeHeader
               coupleNames="Genesis & Jonathan"
-              weddingDate="31.10.2025"
               message="Amar no es mirarse el uno al otro, es mirar juntos en la misma dirección."
               imageSrc={coupleImage}
             />

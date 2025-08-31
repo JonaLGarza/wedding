@@ -1,19 +1,16 @@
 import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
-import { Calendar } from "lucide-react";
 import { AddToCalendar } from "../../atoms/AddToCalendar";
 
 interface WelcomeHeaderProps extends HTMLAttributes<HTMLDivElement> {
   coupleNames: string;
-  weddingDate: string;
   message: string;
   imageSrc?: string;
 }
 
 export const WelcomeHeader = ({
   coupleNames,
-  weddingDate,
   message,
   imageSrc,
   className,
@@ -22,7 +19,7 @@ export const WelcomeHeader = ({
   return (
     <div 
       className={cn(
-        "relative text-center space-y-8 py-16 min-h-screen flex flex-col justify-center",
+        "relative text-center space-y-8 py-16 min-h-screen flex flex-col justify-center p-4",
         imageSrc && "bg-cover bg-center bg-no-repeat",
         className
       )} 
@@ -47,11 +44,6 @@ export const WelcomeHeader = ({
         <Heading level={1} className="font-script text-5xl md:text-6xl text-white">
           {coupleNames}
         </Heading>
-        
-        <div className="flex items-center justify-center space-x-2 text-white">
-          <Calendar className="h-5 w-5" />
-          <span className="text-lg font-medium">{weddingDate}</span>
-        </div>
         
         {/* Add to Calendar Button */}
         <div className="flex justify-center relative z-20">
