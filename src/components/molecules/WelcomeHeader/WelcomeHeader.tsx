@@ -2,6 +2,7 @@ import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
 import { Calendar } from "lucide-react";
+import { AddToCalendar } from "../../atoms/AddToCalendar";
 
 interface WelcomeHeaderProps extends HTMLAttributes<HTMLDivElement> {
   coupleNames: string;
@@ -50,6 +51,19 @@ export const WelcomeHeader = ({
         <div className="flex items-center justify-center space-x-2 text-white">
           <Calendar className="h-5 w-5" />
           <span className="text-lg font-medium">{weddingDate}</span>
+        </div>
+        
+        {/* Add to Calendar Button */}
+        <div className="flex justify-center">
+          <AddToCalendar
+            title="Boda de Genesis & Jonathan"
+            start="2025-10-31T16:00:00-06:00"
+            end="2025-10-31T23:00:00-06:00"
+            description="Celebración de nuestra boda. ¡Esperamos que puedas acompañarnos en este día tan especial!"
+            location="Gral. Nicolás Bravo 127, Zona Centro, 25000 Saltillo, Coah."
+            allDay={false}
+            className="mt-4"
+          />
         </div>
       </div>
       

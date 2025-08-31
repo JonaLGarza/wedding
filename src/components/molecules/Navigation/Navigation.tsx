@@ -46,7 +46,7 @@ export const Navigation = ({
               <button
                 key={item.id}
                 onClick={() => handleNavigate(item.id)}
-                className="text-[#444] hover:text-[var(--accent)] transition-colors font-medium text-base"
+                className="text-[#444] hover:text-[var(--accent)] hover:bg-[var(--accent)]/10 hover:scale-110 transition-all duration-200 font-medium text-base px-3 py-2 rounded-lg hover:shadow-sm"
               >
                 {item.label}
               </button>
@@ -80,7 +80,7 @@ export const Navigation = ({
                 <button
                   key={item.id}
                   onClick={() => handleNavigate(item.id)}
-                  className="block w-full text-left px-3 py-2 text-[#444] hover:text-[var(--accent)] hover:bg-[var(--muted)]/20 rounded-md transition-colors"
+                  className="block w-full text-left px-3 py-3 text-[#444] hover:text-[var(--accent)] hover:bg-[var(--accent)]/15 hover:scale-[1.02] rounded-lg transition-all duration-200 font-medium"
                 >
                   {item.label}
                 </button>
