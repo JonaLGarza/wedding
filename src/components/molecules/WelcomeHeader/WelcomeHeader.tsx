@@ -2,6 +2,7 @@ import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
 import { AddToCalendar } from "../../atoms/AddToCalendar";
+import { CountdownTimer } from "../../atoms/CountdownTimer";
 
 interface WelcomeHeaderProps extends HTMLAttributes<HTMLDivElement> {
   coupleNames: string;
@@ -33,6 +34,14 @@ export const WelcomeHeader = ({
       
       {/* Content */}
       <div className="relative z-10 space-y-4">
+        {/* Countdown Timer */}
+        <div className="mb-8">
+          <CountdownTimer 
+            targetDate={new Date('2025-10-31T16:00:00-06:00')} 
+            className="mb-6"
+          />
+        </div>
+
         <div className={cn(
         "relative flex items-center justify-center text-3xl font-bold text-white",
         "before:content-[''] before:flex-1 before:border-b before:border-white before:mr-4",
