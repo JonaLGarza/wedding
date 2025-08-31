@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
-import { Calendar, Heart } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 interface WelcomeHeaderProps extends HTMLAttributes<HTMLDivElement> {
   coupleNames: string;

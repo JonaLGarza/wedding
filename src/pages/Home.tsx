@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import WelcomeHeader from "../components/molecules/WelcomeHeader/WelcomeHeader";
 import Navigation from "../components/molecules/Navigation/Navigation";
 import EventDetails from "../components/organisms/EventDetails/EventDetails";
-import Itinerary from "../components/organisms/Itinerary/Itinerary";
 import Gifts from "../components/organisms/Gifts/Gifts";
 import Accommodation from "../components/organisms/Accommodation/Accommodation";
 import RSVPForm, { RSVPFormData } from "../components/organisms/RSVPForm/RSVPForm";
