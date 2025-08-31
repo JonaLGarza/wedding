@@ -53,6 +53,8 @@
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.147 0.004 49.25);
+  --font-script: 'Pinyon Script', cursive;
+  --font-viaoda: 'Viaoda Libre', cursive;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
   --popover: oklch(1 0 0);
@@ -123,6 +125,14 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+}
+
+.font-script {
+  font-family: 'Pinyon Script', cursive;
+}
+
+.font-viaoda {
+  font-family: 'Viaoda Libre', cursive;
 }
