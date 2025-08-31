@@ -71,7 +71,9 @@ const EditRSVPPage = () => {
     return (
       <div className="container mx-auto px-4 py-16 text-center space-y-6">
         <Heading level={2}>Error</Heading>
-        <p className="text-lg text-red-500">{error}</p>
+        {error && (
+          <p className="text-lg text-[var(--brand-terracotta)]">{error}</p>
+        )}
         <Button onClick={handleBackHome}>Back to Home</Button>
       </div>
     );

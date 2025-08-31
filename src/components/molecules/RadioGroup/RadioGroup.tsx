@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { cn } from "../../../lib/utils";
-import { Radio } from "../../atoms/Radio/Radio";
+import Radio from "../../atoms/Radio/Radio";
 import { Label } from "../../atoms/Label/Label";
 
 interface Option {
@@ -50,7 +50,7 @@ export const RadioGroup = ({
             checked={selectedValue === option.value}
             onChange={handleChange}
           />
-          <Label htmlFor={`${name}-${option.value}`}>
+          <Label htmlFor={`${name}-${option.value}`} className="text-[var(--brand-olive)]">
             {option.label}
           </Label>
         </div>

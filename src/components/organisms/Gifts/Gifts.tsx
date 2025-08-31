@@ -37,34 +37,34 @@ export const Gifts = ({
       <Heading level={2} className="text-center">Regalos</Heading>
       
       <div className="text-center max-w-2xl mx-auto">
-        <p className="text-lg text-gray-700 leading-relaxed">{message}</p>
+        <p className="text-lg text-[var(--muted-fg)] leading-relaxed">{message}</p>
       </div>
       
       <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {options.map((option, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow"
+            className="bg-[var(--brand-ivory)]/70 backdrop-blur rounded-2xl shadow-md p-6 border border-[color:var(--brand-beige)] hover:shadow-lg transition-all duration-200 hover:scale-[0.98]"
           >
             <div className="text-center space-y-4">
               {option.icon && (
-                <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                <div className="mx-auto w-16 h-16 bg-[var(--brand-terracotta)]/10 rounded-full flex items-center justify-center">
                   {option.icon}
                 </div>
               )}
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-[var(--brand-olive)] mb-2">
                   {option.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{option.description}</p>
+                <p className="text-[var(--muted-fg)] mb-4">{option.description}</p>
               </div>
               
               {option.action.type === "link" && option.action.url ? (
                 <Button
                   asChild
                   className="w-full"
-                  variant="outline"
+                  variant="secondary"
                 >
                   <a
                     href={option.action.url}
@@ -80,7 +80,7 @@ export const Gifts = ({
                 <Button
                   onClick={() => handleCopyToClipboard(option.action.text)}
                   className="w-full"
-                  variant="outline"
+                  variant="secondary"
                 >
                   <CreditCard className="h-4 w-4 mr-2" />
                   Copiar información

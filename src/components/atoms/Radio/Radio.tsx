@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 
 const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
@@ -7,7 +7,7 @@ const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>
       <input
         type="radio"
         className={cn(
-          "h-4 w-4 cursor-pointer text-primary focus:ring-primary",
+          "h-4 w-4 cursor-pointer text-[var(--brand-terracotta)] focus:ring-[var(--brand-terracotta)]",
           className
         )}
         ref={ref}
@@ -19,4 +19,4 @@ const Radio = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>
 
 Radio.displayName = "Radio";
 
-export { Radio }; 
+export default Radio; 

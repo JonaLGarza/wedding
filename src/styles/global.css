@@ -51,73 +51,97 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.25);
+  
+  /* Wedding Brand Colors - Light Theme */
+  --wedding-rose-blush: #F8E1E7;
+  --wedding-ivory-white: #FFFFFF;
+  --wedding-champagne-gold: #D4AF37;
+  --wedding-sage-green: #A3B18A;
+  --wedding-charcoal-gray: #2F2F2F;
+  
+  /* Wedding Brand Colors - Dark Theme */
+  --wedding-midnight-plum: #2B1B2D;
+  --wedding-antique-rose: #C08081;
+  --wedding-pale-ivory: #F5F5F0;
+  --wedding-soft-gold: #C9A66B;
+  --wedding-deep-green: #556B2F;
+  
+  /* Legacy Brand Colors - Otoñal (for backward compatibility) */
+  --brand-olive: #6B705C;
+  --brand-beige: #D8C3A5;
+  --brand-terracotta: #B5651D;
+  --brand-brown: #8D6E63;
+  --brand-ivory: #F5F5DC;
+  --brand-gold: #C9A66B;
+  --brand-terracotta-700: #8F4E17;
+  --brand-olive-700: #5E6653;
+  
+  /* Light Theme - Wedding */
+  --background: #FAFAF7; /* Cleaner ivory */
+  --foreground: var(--wedding-charcoal-gray);
+  --card: #FAFAF7; /* Cleaner ivory */
+  --card-foreground: var(--wedding-charcoal-gray);
+  --popover: #FAFAF7; /* Cleaner ivory */
+  --popover-foreground: var(--wedding-charcoal-gray);
+  --primary: var(--wedding-champagne-gold);
+  --primary-foreground: var(--wedding-ivory-white);
+  --secondary: var(--wedding-sage-green);
+  --secondary-foreground: var(--wedding-ivory-white);
+  --muted: var(--wedding-rose-blush);
+  --muted-foreground: #444; /* Softer gray for text */
+  --accent: var(--wedding-champagne-gold);
+  --accent-foreground: var(--wedding-ivory-white);
+  --destructive: var(--wedding-rose-blush);
+  --border: var(--wedding-rose-blush);
+  --input: var(--wedding-rose-blush);
+  --ring: rgba(212, 175, 55, 0.55);
+  
+  /* Additional variables used by components */
+  --fg: var(--foreground);
+  --muted-fg: var(--muted-foreground);
+  
+  /* Chart colors for future use */
+  --chart-1: var(--wedding-champagne-gold);
+  --chart-2: var(--wedding-sage-green);
+  --chart-3: var(--wedding-rose-blush);
+  --chart-4: var(--wedding-charcoal-gray);
+  --chart-5: var(--wedding-ivory-white);
+  
   --font-script: 'Pinyon Script', cursive;
   --font-viaoda: 'Viaoda Libre', cursive;
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.147 0.004 49.25);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.147 0.004 49.25);
-  --primary: oklch(0.216 0.006 56.043);
-  --primary-foreground: oklch(0.985 0.001 106.423);
-  --secondary: oklch(0.97 0.001 106.424);
-  --secondary-foreground: oklch(0.216 0.006 56.043);
-  --muted: oklch(0.97 0.001 106.424);
-  --muted-foreground: oklch(0.553 0.013 58.071);
-  --accent: oklch(0.97 0.001 106.424);
-  --accent-foreground: oklch(0.216 0.006 56.043);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.923 0.003 48.717);
-  --input: oklch(0.923 0.003 48.717);
-  --ring: oklch(0.709 0.01 56.259);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0.001 106.423);
-  --sidebar-foreground: oklch(0.147 0.004 49.25);
-  --sidebar-primary: oklch(0.216 0.006 56.043);
-  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-accent: oklch(0.97 0.001 106.424);
-  --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
-  --sidebar-border: oklch(0.923 0.003 48.717);
-  --sidebar-ring: oklch(0.709 0.01 56.259);
 }
 
 .dark {
-  --background: oklch(0.147 0.004 49.25);
-  --foreground: oklch(0.985 0.001 106.423);
-  --card: oklch(0.216 0.006 56.043);
-  --card-foreground: oklch(0.985 0.001 106.423);
-  --popover: oklch(0.216 0.006 56.043);
-  --popover-foreground: oklch(0.985 0.001 106.423);
-  --primary: oklch(0.923 0.003 48.717);
-  --primary-foreground: oklch(0.216 0.006 56.043);
-  --secondary: oklch(0.268 0.007 34.298);
-  --secondary-foreground: oklch(0.985 0.001 106.423);
-  --muted: oklch(0.268 0.007 34.298);
-  --muted-foreground: oklch(0.709 0.01 56.259);
-  --accent: oklch(0.268 0.007 34.298);
-  --accent-foreground: oklch(0.985 0.001 106.423);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.553 0.013 58.071);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.216 0.006 56.043);
-  --sidebar-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-accent: oklch(0.268 0.007 34.298);
-  --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.553 0.013 58.071);
+  /* Dark Theme - Wedding */
+  --background: var(--wedding-midnight-plum);
+  --foreground: var(--wedding-pale-ivory);
+  --card: #3A2F3A;
+  --card-foreground: var(--wedding-pale-ivory);
+  --popover: #3A2F3A;
+  --popover-foreground: var(--wedding-pale-ivory);
+  --primary: var(--wedding-antique-rose);
+  --primary-foreground: var(--wedding-midnight-plum);
+  --secondary: var(--wedding-deep-green);
+  --secondary-foreground: var(--wedding-pale-ivory);
+  --muted: #4A3F4A;
+  --muted-foreground: var(--wedding-pale-ivory);
+  --accent: var(--wedding-rose-blush); /* Blush/rose accent for dark theme */
+  --accent-foreground: var(--wedding-midnight-plum);
+  --destructive: var(--wedding-antique-rose);
+  --border: #5A4F5A;
+  --input: #5A4F5A;
+  --ring: rgba(192, 128, 129, 0.55);
+  
+  /* Additional variables used by components */
+  --fg: var(--foreground);
+  --muted-fg: var(--muted-foreground);
+  
+  /* Chart colors for future use */
+  --chart-1: var(--wedding-soft-gold);
+  --chart-2: var(--wedding-deep-green);
+  --chart-3: var(--wedding-antique-rose);
+  --chart-4: var(--wedding-pale-ivory);
+  --chart-5: var(--wedding-midnight-plum);
 }
 
 @layer base {
@@ -126,6 +150,20 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+  
+  /* Typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-medium;
+  }
+  
+  /* Motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

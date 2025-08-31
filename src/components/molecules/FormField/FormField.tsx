@@ -21,7 +21,7 @@ export const FormField = ({
     <div className={cn("space-y-2", className)}>
       <Label htmlFor={htmlFor}>{label}</Label>
       {children}
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && <p className="text-sm text-[var(--brand-terracotta)]">{error}</p>}
     </div>
   );
 };

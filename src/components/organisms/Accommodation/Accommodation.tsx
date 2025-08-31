@@ -30,31 +30,31 @@ export const Accommodation = ({
       <Heading level={2} className="text-center">{title}</Heading>
       
       <div className="text-center max-w-2xl mx-auto">
-        <p className="text-lg text-gray-700 leading-relaxed">{message}</p>
+        <p className="text-lg text-[var(--muted-fg)] leading-relaxed">{message}</p>
       </div>
       
       <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {hotels.map((hotel, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow"
+            className="bg-[var(--brand-ivory)]/70 backdrop-blur rounded-2xl shadow-md p-6 border border-[color:var(--brand-beige)] hover:shadow-lg transition-all duration-200 hover:scale-[0.98]"
           >
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-gray-900 text-center">
+              <h3 className="text-xl font-semibold text-[var(--brand-olive)] text-center">
                 {hotel.name}
               </h3>
               
               {hotel.description && (
-                <p className="text-gray-600 text-center">{hotel.description}</p>
+                <p className="text-[var(--muted-fg)] text-center">{hotel.description}</p>
               )}
               
               <div className="space-y-3">
-                <div className="flex items-start space-x-2 text-gray-600">
+                <div className="flex items-start space-x-2 text-[var(--muted-fg)]">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                   <p className="text-sm">{hotel.address}</p>
                 </div>
                 
-                <div className="flex items-center space-x-2 text-gray-600">
+                <div className="flex items-center space-x-2 text-[var(--muted-fg)]">
                   <Phone className="h-4 w-4 flex-shrink-0" />
                   <span className="text-sm">{hotel.phone}</span>
                 </div>
@@ -64,7 +64,7 @@ export const Accommodation = ({
                 <Button
                   asChild
                   className="flex-1"
-                  variant="outline"
+                  variant="secondary"
                   size="sm"
                 >
                   <a
@@ -80,7 +80,7 @@ export const Accommodation = ({
                   <Button
                     asChild
                     className="flex-1"
-                    variant="outline"
+                    variant="secondary"
                     size="sm"
                   >
                     <a

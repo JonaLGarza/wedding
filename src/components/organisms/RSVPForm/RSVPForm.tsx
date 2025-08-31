@@ -75,19 +75,19 @@ export const RSVPForm = ({
       <Heading level={2} className="text-center">RSVP</Heading>
       
       <div className="text-center mb-6">
-        <p className="text-gray-600 mb-4">
+        <p className="text-[var(--muted-fg)] mb-4">
           ¡Queremos compartir este momento tan esperado contigo!
         </p>
-        <p className="text-gray-600 mb-4">
+        <p className="text-[var(--muted-fg)] mb-4">
           Por favor ayúdanos confirmando tu asistencia.
         </p>
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <p className="text-yellow-800 font-medium">- No niños -</p>
+        <div className="bg-[var(--brand-gold)]/10 border border-[var(--brand-gold)]/30 rounded-lg p-4">
+          <p className="text-[var(--brand-brown)] font-medium">- No niños -</p>
         </div>
       </div>
       
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-        <p className="text-blue-800 text-sm">
+      <div className="bg-[var(--brand-olive)]/10 border border-[var(--brand-olive)]/30 rounded-lg p-4 mb-6">
+        <p className="text-[var(--brand-olive)] text-sm">
           <strong>Instrucciones:</strong> Escribe las primeras 3 letras de tu nombre y da clic en la sugerencia que aparecerá desplegada. 
           Posteriormente puedes mantener o reducir la cantidad de invitados que asistirán (incluyéndote). 
           Captura todos los campos antes de dar clic en "ENVIAR"
@@ -160,7 +160,7 @@ export const RSVPForm = ({
           </>
         )}
         
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" variant="primary">
           ENVIAR
         </Button>
       </form>

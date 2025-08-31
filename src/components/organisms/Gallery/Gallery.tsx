@@ -62,14 +62,14 @@ export const Gallery = ({
       <Heading level={2} className="text-center">{title}</Heading>
       
       <div className="text-center max-w-2xl mx-auto">
-        <p className="text-lg text-gray-700 leading-relaxed">{message}</p>
+        <p className="text-lg text-[var(--muted-fg)] leading-relaxed">{message}</p>
       </div>
       
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
         {images.map((image, index) => (
           <div
             key={image.id}
-            className="aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+            className="aspect-square overflow-hidden rounded-xl cursor-pointer hover:opacity-90 transition-all duration-200 hover:scale-[0.98] shadow-md hover:shadow-lg"
             onClick={() => openModal(image, index)}
           >
             <img
@@ -84,7 +84,7 @@ export const Gallery = ({
       {/* Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[var(--brand-olive)]/90 z-50 flex items-center justify-center p-4"
           onClick={closeModal}
           onKeyDown={handleKeyDown}
           tabIndex={0}
@@ -92,21 +92,21 @@ export const Gallery = ({
           <div className="relative max-w-4xl max-h-full">
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+              className="absolute top-4 right-4 text-[var(--brand-ivory)] hover:text-[var(--brand-beige)] z-10 transition-colors"
             >
               <X className="h-8 w-8" />
             </button>
             
             <button
               onClick={goToPrevious}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--brand-ivory)] hover:text-[var(--brand-beige)] z-10 transition-colors"
             >
               <ChevronLeft className="h-8 w-8" />
             </button>
             
             <button
               onClick={goToNext}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[var(--brand-ivory)] hover:text-[var(--brand-beige)] z-10 transition-colors"
             >
               <ChevronRight className="h-8 w-8" />
             </button>
@@ -120,13 +120,13 @@ export const Gallery = ({
               />
               
               {selectedImage.caption && (
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 text-center">
+                <div className="absolute bottom-0 left-0 right-0 bg-[var(--brand-olive)]/50 text-[var(--brand-ivory)] p-4 text-center">
                   <p>{selectedImage.caption}</p>
                 </div>
               )}
             </div>
             
-            <div className="text-center text-white mt-4">
+            <div className="text-center text-[var(--brand-ivory)] mt-4">
               <span className="text-sm">
                 {currentIndex + 1} de {images.length}
               </span>

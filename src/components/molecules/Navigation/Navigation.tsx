@@ -32,29 +32,31 @@ export const Navigation = ({
   };
 
   return (
-    <nav className={cn("sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200", className)} {...props}>
+    <nav className={cn("sticky top-0 z-40 bg-[var(--card)]/95 backdrop-blur-sm border-b border-[var(--border)]", className)} {...props}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-script text-primary">Jonathan & Genesis</h1>
+            <h1 className="text-xl font-script text-[var(--accent)]">Jonathan & Genesis</h1>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-12">
             {items.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavigate(item.id)}
-                className="text-gray-700 hover:text-primary transition-colors font-medium"
+                className="text-[#444] hover:text-[var(--accent)] transition-colors font-medium text-base"
               >
                 {item.label}
               </button>
             ))}
+            
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button and theme toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            
             <Button
               variant="ghost"
               size="sm"
@@ -72,13 +74,13 @@ export const Navigation = ({
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200">
+          <div className="md:hidden border-t border-[var(--border)]">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {items.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavigate(item.id)}
-                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition-colors"
+                  className="block w-full text-left px-3 py-2 text-[#444] hover:text-[var(--accent)] hover:bg-[var(--muted)]/20 rounded-md transition-colors"
                 >
                   {item.label}
                 </button>

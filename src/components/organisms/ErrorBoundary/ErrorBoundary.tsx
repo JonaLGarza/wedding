@@ -1,5 +1,6 @@
-import { ReactNode, useEffect, useState } from "react";
-import FallbackMessage from "../../molecules/FallBackMessage/FallBackMessage";
+import { ReactNode, useEffect, useState, lazy, Suspense } from "react";
+
+const FallbackMessage = lazy(() => import("../../molecules/FallBackMessage/FallBackMessage"));
 
 export function ErrorBoundary({ children }: { children: ReactNode }) {
   const [hasError, setHasError] = useState(false);
@@ -15,7 +16,18 @@ export function ErrorBoundary({ children }: { children: ReactNode }) {
   }, []);
 
   if (hasError) {
-    return <FallbackMessage title="Oops!" message="Something went wrong." />;
+    return (
+      <Suspense fallback={
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center space-y-4">
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-[var(--brand-terracotta)] border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+            <p className="text-lg text-[var(--muted-fg)]">Loading...</p>
+          </div>
+        </div>
+      }>
+        <FallbackMessage title="Oops!" message="Something went wrong." />
+      </Suspense>
+    );
   }
 
   return <>{children}</>;
@@ -33,7 +45,7 @@ export function ErrorThrowingComponent() {
   return (
     <button
       onClick={() => setShouldThrow(true)}
-      className="px-4 py-2 bg-red-500 text-white rounded"
+      className="px-4 py-2 bg-[var(--brand-terracotta)] text-[var(--brand-ivory)] rounded-xl hover:bg-[var(--brand-terracotta-700)] transition-colors"
     >
       Trigger Error
     </button>
