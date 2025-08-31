@@ -191,7 +191,7 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex flex-col items-center gap-1 rounded-md px-2.5 py-1.5 shadow-sm border bg-white/80 hover:bg-white/90 focus:outline-none focus:ring-1 focus:ring-[var(--brand-terracotta)]/20 text-[var(--brand-olive)] hover:text-[var(--brand-olive)] border-[var(--brand-terracotta)]/10 hover:border-[var(--brand-terracotta)]/20 transition-all duration-200 backdrop-blur-sm"
+        className="inline-flex flex-col items-center gap-1 rounded-[5px] px-2.5 py-1.5 shadow-sm border bg-white/80 hover:bg-white/90 focus:outline-none focus:ring-1 focus:ring-[var(--brand-terracotta)]/20 text-[var(--brand-olive)] hover:text-[var(--brand-olive)] border-[var(--brand-terracotta)]/10 hover:border-[var(--brand-terracotta)]/20 transition-all duration-200 backdrop-blur-sm"
       >
         {/* Fecha del evento */}
         <div className="flex items-center justify-center space-x-1">
