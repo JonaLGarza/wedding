@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-interface CountdownTimerProps {
+export interface CountdownTimerProps {
   targetDate: Date;
   className?: string;
 }
