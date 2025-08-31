@@ -65,20 +65,34 @@ export const Gallery = ({
         <p className="text-lg text-[var(--muted-fg)] leading-relaxed">{message}</p>
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-        {images.map((image, index) => (
-          <div
-            key={image.id}
-            className="aspect-square overflow-hidden rounded-xl cursor-pointer hover:opacity-90 transition-all duration-200 hover:scale-[0.98] shadow-md hover:shadow-lg"
-            onClick={() => openModal(image, index)}
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
+      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 max-w-6xl mx-auto">
+        {images.map((image, index) => {
+          // Create different heights for Pinterest-style masonry effect
+          const heights = [
+            'h-48 md:h-56', // Short
+            'h-64 md:h-72', // Medium
+            'h-80 md:h-96', // Tall
+            'h-56 md:h-64', // Medium-short
+            'h-72 md:h-80', // Medium-tall
+            'h-96 md:h-112', // Very tall
+          ];
+          
+          const height = heights[index % heights.length];
+          
+          return (
+            <div
+              key={image.id}
+              className={`break-inside-avoid mb-4 overflow-hidden rounded-xl cursor-pointer hover:opacity-90 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl`}
+              onClick={() => openModal(image, index)}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className={`w-full ${height} object-cover`}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Modal */}
