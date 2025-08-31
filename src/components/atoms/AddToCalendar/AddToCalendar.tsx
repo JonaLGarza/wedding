@@ -183,7 +183,7 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
 
   // -------------------- Render --------------------
   return (
-    <div className={`relative inline-block ${className}`} ref={menuRef}>
+    <div className={`relative inline-block z-[99999] ${className}`} ref={menuRef}>
       {/* Botón integrado con fecha y acción */}
       <button
         id={btnId}
@@ -235,7 +235,7 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
         <div
           role="menu"
           aria-labelledby={btnId}
-          className="absolute z-50 mt-2 w-full rounded-xl border bg-[var(--brand-ivory)] shadow-lg p-2 border-[var(--brand-terracotta)]/20"
+          className="absolute z-[999999] mt-2 w-full rounded-xl border bg-[var(--brand-ivory)] shadow-lg p-2 border-[var(--brand-terracotta)]/20"
         >
           <MenuItem
             label="Google Calendar"
@@ -281,12 +281,13 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
             }}
           />
           <MenuItem 
-            label="Apple/Outlook (archivo .ics)" 
+            label="Apple" 
             icon={
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                <path d="M8 12h8v2H8zm0 4h6v2H8z"/>
-              </svg>
+              <img 
+                src="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/apple.ico" 
+                alt="Apple/Outlook Calendar" 
+                className="w-4 h-4"
+              />
             }
             onSelect={downloadICS} 
           />

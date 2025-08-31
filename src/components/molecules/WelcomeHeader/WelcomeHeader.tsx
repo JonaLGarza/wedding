@@ -54,7 +54,7 @@ export const WelcomeHeader = ({
         </div>
         
         {/* Add to Calendar Button */}
-        <div className="flex justify-center">
+        <div className="flex justify-center relative z-20">
           <AddToCalendar
             title="Boda de Genesis & Jonathan"
             start="2025-10-31T16:00:00-06:00"
@@ -67,7 +67,7 @@ export const WelcomeHeader = ({
         </div>
       </div>
       
-      <div className="relative z-10 max-w-3xl mx-auto space-y-4">
+      <div className="relative z-5 max-w-3xl mx-auto space-y-4">
         <p className="text-xl text-white leading-relaxed">{message}</p>
       </div>
     </div>
