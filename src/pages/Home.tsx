@@ -106,8 +106,6 @@ const HomePage = () => {
               <EventDetails
                 title="¿Cuándo & Dónde?"
                 date="31 de Octubre de 2025"
-                ceremonyAddress="Gral. Nicolás Bravo 127, Zona Centro, 25000 Saltillo, Coah."
-                receptionAddress="Quinta La Alborada, Blvd. Luis Donaldo Colosio #265 Col, La Aurora, 25298 Saltillo, Coah."
                 dressCode="Formal"
                 itineraryItems={[
                   {
