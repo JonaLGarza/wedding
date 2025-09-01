@@ -103,8 +103,8 @@ export default function WeatherWidget({
             timestamp: Date.now()
           });
         }
-      } catch (e: any) {
-        if (!cancelled) setError(e?.message || "Error cargando el clima");
+      } catch (e: unknown) {
+        if (!cancelled) setError(e instanceof Error ? e.message : "Error cargando el clima");
       } finally {
         if (!cancelled) setLoading(false);
       }
