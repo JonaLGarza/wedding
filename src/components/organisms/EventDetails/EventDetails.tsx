@@ -2,6 +2,7 @@ import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
 import { Calendar, Shirt, Clock, MapPin, Map } from "lucide-react";
+import { AddToCalendar } from "../../atoms/AddToCalendar/AddToCalendar";
 
 interface ItineraryItem {
   title: string;
@@ -14,8 +15,6 @@ interface ItineraryItem {
 interface EventDetailsProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
   date: string;
-  ceremonyAddress: string;
-  receptionAddress: string;
   dressCode: string;
   itineraryItems: ItineraryItem[];
 }
@@ -23,16 +22,26 @@ interface EventDetailsProps extends HTMLAttributes<HTMLDivElement> {
 export const EventDetails = ({
   title,
   date,
-  ceremonyAddress,
-  receptionAddress,
   dressCode,
   itineraryItems,
   className,
   ...props
 }: EventDetailsProps) => {
   return (
-    <div className={cn("space-y-8", className)} {...props}>
+    <div className={cn("space-y-4", className)} {...props}>
       <Heading level={2} className="text-center">{title}</Heading>
+              {/* Add to Calendar Button */}
+        <div className="flex justify-center relative z-20">
+          <AddToCalendar
+            title="Boda de Genesis & Jonathan"
+            start="2025-10-31T16:00:00-06:00"
+            end="2025-10-31T23:00:00-06:00"
+            description="Celebración de nuestra boda. ¡Esperamos que puedas acompañarnos en este día tan especial!"
+            location="Gral. Nicolás Bravo 127, Zona Centro, 25000 Saltillo, Coah."
+            allDay={false}
+            className="mt-4"
+          />
+        </div>
       
       <div className="text-center max-w-2xl mx-auto mb-8">
         <p className="text-lg text-[var(--muted-fg)]">
