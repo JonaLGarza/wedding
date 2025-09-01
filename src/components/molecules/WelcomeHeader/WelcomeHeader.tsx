@@ -1,7 +1,6 @@
 import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
-import { AddToCalendar } from "../../atoms/AddToCalendar";
 import { CountdownTimer } from "../../atoms/CountdownTimer";
 
 interface WelcomeHeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -54,18 +53,6 @@ export const WelcomeHeader = ({
           {coupleNames}
         </Heading>
         
-        {/* Add to Calendar Button */}
-        <div className="flex justify-center relative z-20">
-          <AddToCalendar
-            title="Boda de Genesis & Jonathan"
-            start="2025-10-31T16:00:00-06:00"
-            end="2025-10-31T23:00:00-06:00"
-            description="Celebración de nuestra boda. ¡Esperamos que puedas acompañarnos en este día tan especial!"
-            location="Gral. Nicolás Bravo 127, Zona Centro, 25000 Saltillo, Coah."
-            allDay={false}
-            className="mt-4"
-          />
-        </div>
       </div>
       
       <div className="relative z-5 max-w-3xl mx-auto space-y-4">
