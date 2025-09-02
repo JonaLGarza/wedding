@@ -22,6 +22,11 @@ type OneCall = {
   daily: Daily[];
 };
 
+type APIResponse = {
+  place: { name: string };
+  weather: OneCall;
+};
+
 const dayShortEs = (tsMs: number) =>
   new Intl.DateTimeFormat("es-MX", { weekday: "short" })
     .format(tsMs)
@@ -41,10 +46,10 @@ export default function WeatherWidget({
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<string>("");
 
-  // Get API key from environment variable
-  const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
+  // Base del backend (Nest). En prod puedes setear VITE_API_BASE con la URL de EB.
+  const API_BASE = import.meta.env.VITE_API_BASE ?? "";
 
-  // Usar el hook de caché
+  // Hook de caché
   const {
     cache,
     isFromCache,
@@ -58,15 +63,15 @@ export default function WeatherWidget({
 
     async function load() {
       try {
-        if (!apiKey) {
-          throw new Error("API key no configurada");
+        if (!API_BASE) {
+          throw new Error("API base no configurada");
         }
 
         setLoading(true);
+        setError(null);
 
-        // Verificar si necesitamos hacer una nueva llamada a la API
+        // 1) Si no debemos ir a la API y hay caché, úsalo
         if (!shouldFetchFromAPI() && cache?.data) {
-          // Usar datos del caché
           if (!cancelled) {
             setData(cache.data.weather);
             setPlace(cache.data.place);
@@ -75,32 +80,33 @@ export default function WeatherWidget({
           return;
         }
 
-        // 1) Geocoding para obtener lat/lon de la ciudad
-        const geoRes = await fetch(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(
-            `${city},${countryCode}`
-          )}&limit=1&appid=${apiKey}`
-        );
-        const geo = await geoRes.json();
-        if (!geo?.length) throw new Error("No se encontró la ciudad");
-        const { lat, lon, name } = geo[0];
-        if (!cancelled) setPlace({ name });
+        // 2) Llamar a tu backend Nest
+        const base = API_BASE.replace(/\/$/, "");
+        const url = `${base}/weather/forecast`;
 
-        // 2) One Call API para actual y 7 días
-        const weatherRes = await fetch(
-          `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&lang=es&exclude=minutely,hourly,alerts&appid=${apiKey}`
-        );
-        const weather = (await weatherRes.json()) as OneCall;
-        
+        const res = await fetch(url, { headers: { Accept: "application/json" } });
+        if (!res.ok) {
+          let msg = `Error ${res.status}`;
+          try {
+            const body = await res.json();
+            msg = body?.message || body?.error || msg;
+          } catch {
+            throw new Error(msg);
+          }
+        }
+
+        const json = (await res.json()) as APIResponse;
+
         if (!cancelled) {
-          setData(weather);
+          setData(json.weather);
+          setPlace(json.place);
           setLastUpdated("Ahora");
-          
+
           // Guardar en caché
           setCachedData({
-            weather,
-            place: { name },
-            timestamp: Date.now()
+            weather: json.weather,
+            place: json.place,
+            timestamp: Date.now(),
           });
         }
       } catch (e: unknown) {
@@ -114,35 +120,31 @@ export default function WeatherWidget({
     return () => {
       cancelled = true;
     };
-  }, [city, countryCode, apiKey, shouldFetchFromAPI, cache, setCachedData]);
+  }, [city, countryCode, API_BASE, shouldFetchFromAPI, cache, setCachedData]);
 
-  // Función para formatear la última actualización
+  // Formateo "última actualización"
   const formatLastUpdated = (timestamp: number): string => {
     const now = Date.now();
     const diff = now - timestamp;
     const hours = Math.floor(diff / (60 * 60 * 1000));
     const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
-    
-    if (hours > 0) {
-      return `Hace ${hours}h ${minutes}m`;
-    } else if (minutes > 0) {
-      return `Hace ${minutes}m`;
-    } else {
-      return "Ahora";
-    }
+
+    if (hours > 0) return `Hace ${hours}h ${minutes}m`;
+    if (minutes > 0) return `Hace ${minutes}m`;
+    return "Ahora";
   };
 
-  // Función para forzar actualización (limpiar caché y recargar)
+  // Forzar actualización
   const handleRefresh = () => {
     clearCache();
     setLoading(true);
     setError(null);
-    // El useEffect se ejecutará automáticamente
+    // useEffect se encargará de recargar
   };
 
   const days = useMemo(() => {
     if (!data) return [];
-    // Tomamos los próximos 7 días (daily[1..7]) para que "hoy" quede solo en el encabezado
+    // Próximos 7 días (daily[1..7])
     return data.daily.slice(1, 8);
   }, [data]);
 
@@ -205,8 +207,8 @@ export default function WeatherWidget({
 
         {/* Separador vertical */}
         <div className="h-20 w-px bg-[var(--brand-olive)]/30" />
-        
-        {/* Información del caché y estado de actualización */}
+
+        {/* Info caché */}
         <div className="hidden sm:flex flex-col items-center justify-center gap-2">
           <div className="text-center">
             <p className="text-xs text-[var(--brand-olive)]">
