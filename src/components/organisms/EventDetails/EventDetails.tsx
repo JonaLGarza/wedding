@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
-import { Calendar, Shirt, Clock, MapPin, Map } from "lucide-react";
+import { Shirt, Clock, MapPin, Map } from "lucide-react";
 import { AddToCalendar } from "../../atoms/AddToCalendar/AddToCalendar";
 
 interface ItineraryItem {

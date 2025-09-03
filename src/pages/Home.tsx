@@ -3,6 +3,7 @@ import WelcomeHeader from "../components/molecules/WelcomeHeader/WelcomeHeader";
 import Navigation from "../components/molecules/Navigation/Navigation";
 import RSVPForm, { RSVPFormData } from "../components/organisms/RSVPForm/RSVPForm";
 import Confirmation from "../components/organisms/Confirmation/Confirmation";
+import SaltilloGuide from "../components/organisms/SaltilloGuide/SaltilloGuide";
 import { Helmet } from 'react-helmet-async';
 import { motion } from "framer-motion";
 import { Gift, CreditCard } from "lucide-react";
@@ -95,7 +96,7 @@ const HomePage = () => {
           <div ref={setSectionRef("home")}>
             <WelcomeHeader
               coupleNames="Genesis & Jonathan"
-              message="Amar no es mirarse el uno al otro, es mirar juntos en la misma dirección."
+              message="Prefiero compartir una sola vida contigo que enfrentar sin ti todas las edades de este mundo"
               imageSrc={coupleImage}
             />
           </div>
@@ -171,6 +172,11 @@ const HomePage = () => {
                 ]}
               />
             </LazyComponentWrapper>
+          </div>
+          
+          {/* Saltillo Guide Section */}
+          <div ref={setSectionRef("saltilloguide")}>
+            <SaltilloGuide />
           </div>
           
           {/* RSVP Section */}
