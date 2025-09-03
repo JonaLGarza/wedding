@@ -53,7 +53,7 @@ export const Gifts = ({
   };
 
   return (
-    <div className={cn("space-y-8", className)} {...props}>
+    <div className={cn("space-y-8 px-4", className)} {...props}>
       <Heading level={2} className="text-center">Regalos</Heading>
       
       <div className="text-center max-w-2xl mx-auto">

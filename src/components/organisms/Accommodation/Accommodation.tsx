@@ -26,7 +26,7 @@ export const Accommodation = ({
   ...props
 }: AccommodationProps) => {
   return (
-    <div className={cn("space-y-8", className)} {...props}>
+    <div className={cn("space-y-8 px-4", className)} {...props}>
       <Heading level={2} className="text-center">{title}</Heading>
       
       <div className="text-center max-w-2xl mx-auto">

@@ -52,7 +52,6 @@ export default function WeatherWidget({
   // Hook de caché
   const {
     cache,
-    isFromCache,
     shouldFetchFromAPI,
     setCachedData,
     clearCache
@@ -212,7 +211,7 @@ export default function WeatherWidget({
         <div className="hidden sm:flex flex-col items-center justify-center gap-2">
           <div className="text-center">
             <p className="text-xs text-[var(--brand-olive)]">
-              {isFromCache ? "📱 Desde caché" : "🌐 Actualizado al día"}
+              🌐 Actualizado al día
             </p>
             <p className="text-xs text-[var(--brand-olive)]/70">
               {lastUpdated}

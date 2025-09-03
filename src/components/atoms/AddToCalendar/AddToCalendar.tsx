@@ -191,7 +191,7 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex flex-col items-center gap-1 rounded-[5px] px-2.5 py-1.5 shadow-sm border bg-white/80 hover:bg-white/90 focus:outline-none focus:ring-1 focus:ring-[var(--brand-terracotta)]/20 text-[var(--brand-olive)] hover:text-[var(--brand-olive)] border-[var(--brand-terracotta)]/10 hover:border-[var(--brand-terracotta)]/20 transition-all duration-200 backdrop-blur-sm"
+        className="inline-flex flex-col items-center gap-1 rounded-[5px] px-2.5 py-1.5 shadow-sm border bg-[var(--brand-ivory)]/70 hover:bg-[var(--brand-ivory)]/90 focus:outline-none focus:ring-1 focus:ring-[var(--brand-terracotta)]/20 text-[var(--brand-olive)] hover:text-[var(--brand-olive)] border-[var(--brand-terracotta)]/10 hover:border-[var(--brand-terracotta)]/20 transition-all duration-200 backdrop-blur-sm"
       >
         {/* Fecha del evento */}
         <div className="flex items-center justify-center space-x-1">
@@ -235,7 +235,7 @@ export const AddToCalendar: React.FC<AddToCalendarProps> = ({
         <div
           role="menu"
           aria-labelledby={btnId}
-          className="absolute z-[999999] mt-2 w-full rounded-md border bg-white/80 backdrop-blur-sm shadow-sm p-2 border-[var(--brand-terracotta)]/10 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
+          className="absolute z-[999999] mt-2 w-full rounded-md border bg-[var(--brand-ivory)]/70 backdrop-blur-sm shadow-sm p-2 border-[var(--brand-terracotta)]/10 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
         >
           <MenuItem
             label="Google Calendar"

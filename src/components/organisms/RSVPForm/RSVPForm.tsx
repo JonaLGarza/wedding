@@ -72,7 +72,7 @@ export const RSVPForm = ({
   };
 
   return (
-    <div className={cn("space-y-6 max-w-xl mx-auto", className)}>
+    <div className={cn("space-y-6 max-w-xl mx-auto px-4", className)}>
       <Heading level={2} className="text-center">RSVP</Heading>
       
       <div className="text-center mb-6">
@@ -167,7 +167,7 @@ export const RSVPForm = ({
       </form>
       
       {/* Widget del Clima */}
-      <div className="mt-12">
+      <div className="mt-12 px-4">
         <div className="text-center mb-6">
           <Heading level={3} className="text-[var(--brand-brown)]">
             Clima para el Gran Día

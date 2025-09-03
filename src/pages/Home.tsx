@@ -105,7 +105,6 @@ const HomePage = () => {
             <LazyComponentWrapper>
               <EventDetails
                 title="¿Cuándo & Dónde?"
-                date="31 de Octubre de 2025"
                 dressCode="Formal"
                 itineraryItems={[
                   {

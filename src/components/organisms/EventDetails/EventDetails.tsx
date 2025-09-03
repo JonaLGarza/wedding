@@ -14,21 +14,19 @@ interface ItineraryItem {
 
 interface EventDetailsProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
-  date: string;
   dressCode: string;
   itineraryItems: ItineraryItem[];
 }
 
 export const EventDetails = ({
   title,
-  date,
   dressCode,
   itineraryItems,
   className,
   ...props
 }: EventDetailsProps) => {
   return (
-    <div className={cn("space-y-4", className)} {...props}>
+    <div className={cn("space-y-4 px-4", className)} {...props}>
       <Heading level={2} className="text-center">{title}</Heading>
               {/* Add to Calendar Button */}
         <div className="flex justify-center relative z-20">
@@ -122,11 +120,6 @@ export const EventDetails = ({
       
       {/* Date and Dress Code Section */}
       <div className="text-center space-y-6">
-        <div className="inline-flex items-center space-x-2 bg-[var(--brand-terracotta)]/10 px-6 py-3 rounded-full">
-          <Calendar className="h-5 w-5 text-[var(--brand-terracotta)]" />
-          <span className="font-medium text-[var(--brand-olive)]">{date}</span>
-        </div>
-        
         <div className="inline-flex items-center space-x-2 bg-[var(--brand-beige)]/30 px-6 py-3 rounded-full">
           <Shirt className="h-5 w-5 text-[var(--brand-terracotta)]" />
           <span className="font-medium text-[var(--brand-olive)]">Código de vestimenta: {dressCode}</span>
