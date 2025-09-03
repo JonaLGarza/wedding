@@ -28,7 +28,7 @@ const LazyComponentWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 // You would replace this with your actual couple image
-const coupleImage = "https://scontent.fntr10-1.fna.fbcdn.net/v/t39.30808-6/499197807_23971003055920950_6816323037988632063_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFJtI_tc7QWckmmvsEV6f7q2ms7zJ_kZaraazvMn-RlqjrzzuAz6rN-xaEpFoe9pV0PKlNmqrNg5wPoX_eVQbP7&_nc_ohc=92J1xudvC18Q7kNvwFmXlhz&_nc_oc=Adki3V4cvq4IvZ4w6XH5V3dmlghY3tevC0zokLiUdMznRqVELMPp05hMD87Qh1Jr6bWuF1lwQg7mebrdstmX7XcU&_nc_zt=23&_nc_ht=scontent.fntr10-1.fna&_nc_gid=UGUX8CLGxVkbTZgNlCtvMQ&oh=00_AfWeYMlG3p6pIRJma16XjAIV7U7x9Os5PK51BWor8R4ENQ&oe=68B747CE";
+const coupleImage = "https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/portada.jpg";
 
 const HomePage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -136,27 +136,13 @@ const HomePage = () => {
                   {
                     title: "Sobre",
                     description: "Tendremos una caja para sobres el día del evento.",
-                    action: {
-                      text: "Información del sobre",
-                      type: "copy"
-                    },
                     icon: <Gift className="h-8 w-8 text-[var(--brand-terracotta)]" />
                   },
                   {
-                    title: "Regalo",
-                    description: "Amazon",
+                    title: "Transferencia :D",
+                    description: "Mi cuenta Citibanamex:",
                     action: {
-                      text: "Clic aquí para ir a nuestra mesa de regalos",
-                      url: "https://www.amazon.com",
-                      type: "link"
-                    },
-                    icon: <Gift className="h-8 w-8 text-[var(--brand-terracotta)]" />
-                  },
-                  {
-                    title: "Sobre",
-                    description: "Mi cuenta BBVA:",
-                    action: {
-                      text: "Cuenta CLABE: 012 078 01593760062 7\nTarjeta de débito: 4152 3138 9407 8331",
+                      text: "5204 1660 3074 2391",
                       type: "copy"
                     },
                     icon: <CreditCard className="h-8 w-8 text-[var(--brand-terracotta)]" />
@@ -249,7 +235,7 @@ const HomePage = () => {
                   },
                   {
                     id: "8",
-                    src: "https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/8.jpeg",
+                    src: "https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/portada.jpg",
                     alt: "Foto de la boda 8",
                     caption: "Momentos especiales"
                   },
