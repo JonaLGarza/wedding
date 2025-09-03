@@ -105,21 +105,30 @@ export const Gallery = ({
         >
           <div className="relative max-w-4xl max-h-full">
             <button
-              onClick={closeModal}
+              onClick={(e) => {
+                e.stopPropagation();
+                closeModal();
+              }}
               className="absolute top-4 right-4 text-[var(--brand-ivory)] hover:text-[var(--brand-beige)] z-10 transition-colors"
             >
               <X className="h-8 w-8" />
             </button>
             
             <button
-              onClick={goToPrevious}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--brand-ivory)] hover:text-[var(--brand-beige)] z-10 transition-colors"
             >
               <ChevronLeft className="h-8 w-8" />
             </button>
             
             <button
-              onClick={goToNext}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[var(--brand-ivory)] hover:text-[var(--brand-beige)] z-10 transition-colors"
             >
               <ChevronRight className="h-8 w-8" />
