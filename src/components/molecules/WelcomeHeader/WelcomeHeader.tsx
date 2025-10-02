@@ -23,12 +23,26 @@ export const WelcomeHeader = ({
         imageSrc && "bg-cover bg-center bg-no-repeat",
         className
       )} 
-      style={imageSrc ? { backgroundImage: `url(${imageSrc})` } : {}}
+      style={imageSrc ? { 
+        backgroundImage: `url(${imageSrc})`
+      } : {}}
       {...props}
     >
       {/* Background Overlay */}
       {imageSrc && (
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div 
+          className="absolute inset-0 bg-black/55" 
+          style={{ 
+            zIndex: 1,
+            pointerEvents: 'none',
+            width: '100%',
+            height: '100%',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }}
+        ></div>
       )}
       
       {/* Content */}
