@@ -1,8 +1,6 @@
-import { useState, useRef, lazy, Suspense } from "react";
+import { useRef, lazy, Suspense } from "react";
 import WelcomeHeader from "../components/molecules/WelcomeHeader/WelcomeHeader";
 import Navigation from "../components/molecules/Navigation/Navigation";
-import RSVPForm, { RSVPFormData } from "../components/organisms/RSVPForm/RSVPForm";
-import Confirmation from "../components/organisms/Confirmation/Confirmation";
 import SaltilloGuide from "../components/organisms/SaltilloGuide/SaltilloGuide";
 import DressCode from "../components/organisms/DressCode/DressCode";
 import { Helmet } from 'react-helmet-async';
@@ -33,25 +31,10 @@ const LazyComponentWrapper = ({ children }: { children: React.ReactNode }) => (
 const coupleImage = "https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/portada.jpg";
 
 const HomePage = () => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState<RSVPFormData | null>(null);
-
-  
   const sectionsRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
   
   const setSectionRef = (sectionId: string) => (el: HTMLDivElement | null) => {
     sectionsRef.current[sectionId] = el;
-  };
-  
-  const handleSubmit = (data: RSVPFormData) => {
-    setFormData(data);
-    setFormSubmitted(true);
-    // Here you would typically send this data to your backend
-    console.log("Form submitted:", data);
-  };
-  
-  const handleEdit = () => {
-    setFormSubmitted(false);
   };
   
   const handleNavigate = (sectionId: string) => {
@@ -106,7 +89,6 @@ const HomePage = () => {
             <LazyComponentWrapper>
               <EventDetails
                 title="¿Cuándo & Dónde?"
-                dressCode="Formal"
                 itineraryItems={[
                   {
                     title: "Ceremonia Religiosa",

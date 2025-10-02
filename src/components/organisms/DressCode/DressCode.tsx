@@ -20,24 +20,39 @@ const DressCode: React.FC<DressCodeProps> = ({ className = '' }) => {
               DRESS CODE
             </h2>
             
-            {/* Subtitle and Description */}
-            <div className="text-left mb-8">
-              <h3 className="text-2xl font-viaoda text-[var(--wedding-champagne-gold)] italic mb-3">
-                FORMAL
-              </h3>
-              <p className="text-lg text-[var(--wedding-charcoal-gray)] font-serif">
-                Nuestra boda será al exterior sobre una explanada.
-              </p>
-            </div>
-            
-            {/* Dress Code Image */}
-            <div className="flex justify-center">
-              <img 
-                src="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/dress+code.png"
-                alt="Dress Code - Formal"
-                className="max-w-full h-auto"
-                style={{ maxHeight: '400px' }}
-              />
+            {/* Images Container - Horizontal on desktop, vertical on mobile */}
+            <div className="flex flex-col md:flex-row gap-8 items-center md:items-start justify-center">
+              {/* Dress Code Column */}
+              <div className="flex-1 max-w-md flex flex-col items-center">
+                <h3 className="text-2xl font-viaoda text-[var(--wedding-champagne-gold)] italic mb-3 text-center">
+                  FORMAL
+                </h3>
+                <p className="text-lg text-[var(--wedding-charcoal-gray)] font-serif mb-6 text-center">
+                  Nuestra boda será al exterior sobre una explanada.
+                </p>
+                <img 
+                  src="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/dress+code.png"
+                  alt="Dress Code - Formal"
+                  className="w-full h-auto object-contain"
+                  style={{ maxHeight: '400px' }}
+                />
+              </div>
+              
+              {/* Color Palette Column */}
+              <div className="flex-1 max-w-md flex flex-col items-center">
+                <h3 className="text-2xl font-viaoda text-[var(--wedding-champagne-gold)] italic mb-3 text-center">
+                  PALETA DE COLORES
+                </h3>
+                <p className="text-lg text-[var(--wedding-charcoal-gray)] font-serif mb-6 text-center">
+                  Opcional
+                </p>
+                <img 
+                  src="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/paleta+de+colores+2.jpg"
+                  alt="Paleta de colores para la boda"
+                  className="w-full h-auto object-contain"
+                  style={{ maxHeight: '400px' }}
+                />
+              </div>
             </div>
           </div>
           

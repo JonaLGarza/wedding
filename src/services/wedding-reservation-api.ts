@@ -9,9 +9,6 @@ import {
   CreateRSVPRequest,
   RSVPStats,
   InvitationCode,
-  ValidateInvitationResponse,
-  GuestSearchParams,
-  ApiResponse,
   ApiError,
 } from './wedding-reservation-types';
 

@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { cn } from "../../../lib/utils";
 import Heading from "../../atoms/Heading/Heading";
-import { Shirt, Clock, MapPin, Map } from "lucide-react";
+import { Clock, MapPin, Map } from "lucide-react";
 import { AddToCalendar } from "../../atoms/AddToCalendar/AddToCalendar";
 
 interface ItineraryItem {
@@ -14,13 +14,11 @@ interface ItineraryItem {
 
 interface EventDetailsProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
-  dressCode: string;
   itineraryItems: ItineraryItem[];
 }
 
 export const EventDetails = ({
   title,
-  dressCode,
   itineraryItems,
   className,
   ...props
