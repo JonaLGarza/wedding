@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-interface LazyImageProps {
+interface OptimizedImageProps {
   src: string;
   alt: string;
   className?: string;
@@ -8,10 +8,11 @@ interface LazyImageProps {
   placeholder?: string;
   onLoad?: () => void;
   onError?: () => void;
-  onClick?: (e: React.MouseEvent<HTMLImageElement>) => void;
+  priority?: boolean;
+  quality?: number;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({
+const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
   className = '',
@@ -19,14 +20,17 @@ const LazyImage: React.FC<LazyImageProps> = ({
   placeholder,
   onLoad,
   onError,
-  onClick
+  priority = false,
+  quality = 75
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(priority);
   const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    if (priority) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,7 +39,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
         }
       },
       {
-        rootMargin: '50px'
+        rootMargin: '50px',
+        threshold: 0.1
       }
     );
 
@@ -44,7 +49,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [priority]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -56,12 +61,21 @@ const LazyImage: React.FC<LazyImageProps> = ({
     onError?.();
   };
 
+  // Generate optimized src with quality parameter if it's an S3 URL
+  const getOptimizedSrc = (originalSrc: string) => {
+    if (originalSrc.includes('s3.us-east-2.amazonaws.com')) {
+      // For S3 URLs, we can add query parameters for optimization
+      return `${originalSrc}?w=800&q=${quality}&f=webp`;
+    }
+    return originalSrc;
+  };
+
   const defaultPlaceholder = (
     <div 
       className="bg-gray-200 animate-pulse flex items-center justify-center"
       style={style}
     >
-      <div className="text-gray-400 text-sm">Loading image...</div>
+      <div className="text-gray-400 text-sm">Loading...</div>
     </div>
   );
 
@@ -80,17 +94,18 @@ const LazyImage: React.FC<LazyImageProps> = ({
         </div>
       ) : (
         <img
-          src={src}
+          src={getOptimizedSrc(src)}
           alt={alt}
           className={`transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
           style={style}
           onLoad={handleLoad}
           onError={handleError}
-          onClick={onClick}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
         />
       )}
     </div>
   );
 };
 
-export default LazyImage;
+export default OptimizedImage;

@@ -4,6 +4,7 @@ import Navigation from "../components/molecules/Navigation/Navigation";
 import SaltilloGuide from "../components/organisms/SaltilloGuide/SaltilloGuide";
 import DressCode from "../components/organisms/DressCode/DressCode";
 import VirtualizedSection from "../components/atoms/VirtualizedSection/VirtualizedSection";
+import { usePerformanceOptimization, useResourceHints } from "../hooks/usePerformanceOptimization";
 import { Helmet } from 'react-helmet-async';
 import { motion } from "framer-motion";
 import { Gift, CreditCard } from "lucide-react";
@@ -34,6 +35,10 @@ const coupleImage = "https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/p
 const HomePage = () => {
   const sectionsRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
   
+  // Performance optimizations
+  usePerformanceOptimization();
+  useResourceHints();
+  
   const setSectionRef = (sectionId: string) => (el: HTMLDivElement | null) => {
     sectionsRef.current[sectionId] = el;
   };
@@ -53,7 +58,21 @@ const HomePage = () => {
           name="description"
           content="Boda de Genesis y Jonathan - 31 de Octubre de 2025. Únete a nosotros para celebrar este momento tan especial lleno de amor y felicidad."
         />
+        {/* Critical resource preloading */}
         <link rel="preload" as="image" href={coupleImage} />
+        <link rel="preload" as="image" href="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/dress+code.png" />
+        <link rel="preload" as="image" href="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/paleta+de+colores+2.jpg" />
+        
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="//jgwedding-photo-videos.s3.us-east-2.amazonaws.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        
+        {/* Preconnect to critical domains */}
+        <link rel="preconnect" href="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com" />
+        
+        {/* Performance hints */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#8B4513" />
       </Helmet>
 
             {/* Navigation */}

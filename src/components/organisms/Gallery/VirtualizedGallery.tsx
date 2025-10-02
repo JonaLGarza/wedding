@@ -207,7 +207,7 @@ export const VirtualizedGallery = ({
                 src={selectedImage.src}
                 alt={selectedImage.alt}
                 className="max-w-full max-h-full object-contain"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent<HTMLImageElement>) => e.stopPropagation()}
               />
               
               {selectedImage.caption && (

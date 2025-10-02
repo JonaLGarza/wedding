@@ -22,26 +22,41 @@ const VirtualizedSection: React.FC<VirtualizedSectionProps> = ({
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasLoaded) {
-          setIsVisible(true);
-          setHasLoaded(true);
-          // Disconnect observer after first load
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin,
-        threshold
+    // Use requestIdleCallback for better performance
+    const scheduleObserver = () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          setupObserver();
+        });
+      } else {
+        setTimeout(setupObserver, 0);
       }
-    );
+    };
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    const setupObserver = () => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !hasLoaded) {
+            setIsVisible(true);
+            setHasLoaded(true);
+            observer.disconnect();
+          }
+        },
+        {
+          rootMargin,
+          threshold
+        }
+      );
 
-    return () => observer.disconnect();
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
+      }
+
+      return () => observer.disconnect();
+    };
+
+    const cleanup = scheduleObserver();
+    return cleanup;
   }, [rootMargin, threshold, hasLoaded]);
 
   const defaultFallback = (
