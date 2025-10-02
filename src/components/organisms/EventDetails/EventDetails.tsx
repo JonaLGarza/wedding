@@ -117,14 +117,6 @@ export const EventDetails = ({
           </div>
         ))}
       </div>
-      
-      {/* Date and Dress Code Section */}
-      <div className="text-center space-y-6">
-        <div className="inline-flex items-center space-x-2 bg-[var(--brand-beige)]/30 px-6 py-3 rounded-full">
-          <Shirt className="h-5 w-5 text-[var(--brand-terracotta)]" />
-          <span className="font-medium text-[var(--brand-olive)]">Código de vestimenta: {dressCode}</span>
-        </div>
-      </div>
     </div>
   );
 };

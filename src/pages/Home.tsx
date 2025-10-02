@@ -4,6 +4,7 @@ import Navigation from "../components/molecules/Navigation/Navigation";
 import RSVPForm, { RSVPFormData } from "../components/organisms/RSVPForm/RSVPForm";
 import Confirmation from "../components/organisms/Confirmation/Confirmation";
 import SaltilloGuide from "../components/organisms/SaltilloGuide/SaltilloGuide";
+import DressCode from "../components/organisms/DressCode/DressCode";
 import { Helmet } from 'react-helmet-async';
 import { motion } from "framer-motion";
 import { Gift, CreditCard } from "lucide-react";
@@ -74,11 +75,10 @@ const HomePage = () => {
       <Navigation
         items={[
           { id: "home", label: "Inicio", href: "#home" },
-          { id: "itinerary", label: "Itinerario", href: "#itinerary" },
           { id: "details", label: "¿Cuándo & Dónde?", href: "#details" },
+          { id: "dresscode", label: "Dress Code", href: "#dresscode" },
           { id: "gifts", label: "Regalos", href: "#gifts" },
           { id: "accommodation", label: "Hospedaje", href: "#accommodation" },
-          { id: "rsvp", label: "RSVP", href: "#rsvp" },
           { id: "gallery", label: "Galería", href: "#gallery" },
         ]}
         onNavigate={handleNavigate}
@@ -125,6 +125,11 @@ const HomePage = () => {
                 ]}
               />
             </LazyComponentWrapper>
+          </div>
+          
+          {/* Dress Code Section */}
+          <div ref={setSectionRef("dresscode")}>
+            <DressCode />
           </div>
           
           {/* Gifts Section */}
@@ -179,14 +184,15 @@ const HomePage = () => {
             <SaltilloGuide />
           </div>
           
-          {/* RSVP Section */}
-          <div ref={setSectionRef("rsvp")}>
-            {formSubmitted && formData ? (
-              <Confirmation data={formData} onEdit={handleEdit} />
-            ) : (
-              <RSVPForm onSubmit={handleSubmit} />
-            )}
-          </div>
+          {/* RSVP Section */} {/* 
+            <div ref={setSectionRef("rsvp")}>
+              {formSubmitted && formData ? (
+                <Confirmation data={formData} onEdit={handleEdit} />
+              ) : (
+                <RSVPForm onSubmit={handleSubmit} />
+              )}
+            </div>
+          */}
           
           {/* Gallery Section */}
           <div ref={setSectionRef("gallery")}>

@@ -82,9 +82,9 @@ export const RSVPForm = ({
         <p className="text-[var(--muted-fg)] mb-4">
           Por favor ayúdanos confirmando tu asistencia.
         </p>
-        <div className="bg-[var(--brand-gold)]/10 border border-[var(--brand-gold)]/30 rounded-lg p-4">
+        {/* <div className="bg-[var(--brand-gold)]/10 border border-[var(--brand-gold)]/30 rounded-lg p-4">
           <p className="text-[var(--brand-brown)] font-medium">- No niños -</p>
-        </div>
+        </div> */}
       </div>
       
       <div className="bg-[var(--brand-olive)]/10 border border-[var(--brand-olive)]/30 rounded-lg p-4 mb-6">
