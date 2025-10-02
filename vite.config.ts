@@ -31,10 +31,15 @@ export default defineConfig(() => ({
       }
     },
     chunkSizeWarningLimit: 1000,
-    minify: 'esbuild' as const
+    minify: 'esbuild' as const,
+    target: 'esnext',
+    cssCodeSplit: true,
+    sourcemap: false,
+    reportCompressedSize: false
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion', 'lucide-react']
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react'],
+    force: true
   }
 }));
   

@@ -1,10 +1,14 @@
-import { useRef, lazy, Suspense } from "react";
+import React, { useRef, lazy, Suspense } from "react";
 import WelcomeHeader from "../components/molecules/WelcomeHeader/WelcomeHeader";
 import Navigation from "../components/molecules/Navigation/Navigation";
 import SaltilloGuide from "../components/organisms/SaltilloGuide/SaltilloGuide";
 import DressCode from "../components/organisms/DressCode/DressCode";
 import VirtualizedSection from "../components/atoms/VirtualizedSection/VirtualizedSection";
+import CriticalCSS from "../components/atoms/CriticalCSS/CriticalCSS";
+import ModernScrollIndicator from "../components/atoms/ScrollIndicator/ModernScrollIndicator";
 import { usePerformanceOptimization, useResourceHints } from "../hooks/usePerformanceOptimization";
+import { useServiceWorker, useOfflineDetection } from "../hooks/useServiceWorker";
+import { useImageOptimization } from "../hooks/useImageOptimization";
 import { Helmet } from 'react-helmet-async';
 import { motion } from "framer-motion";
 import { Gift, CreditCard } from "lucide-react";
@@ -38,6 +42,21 @@ const HomePage = () => {
   // Performance optimizations
   usePerformanceOptimization();
   useResourceHints();
+  useServiceWorker();
+  useOfflineDetection();
+  
+  const { preloadCriticalImages, optimizeImageUrl } = useImageOptimization();
+  
+  // Preload critical images only in production
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      preloadCriticalImages([
+        coupleImage,
+        "https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/dress+code.png",
+        "https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/paleta+de+colores+2.jpg"
+      ]);
+    }
+  }, [preloadCriticalImages]);
   
   const setSectionRef = (sectionId: string) => (el: HTMLDivElement | null) => {
     sectionsRef.current[sectionId] = el;
@@ -52,27 +71,46 @@ const HomePage = () => {
   
   return (
     <>
+      <CriticalCSS />
       <Helmet>
         <title>Boda de Genesis y Jonathan - 31.10.2025</title>
         <meta
           name="description"
           content="Boda de Genesis y Jonathan - 31 de Octubre de 2025. Únete a nosotros para celebrar este momento tan especial lleno de amor y felicidad."
         />
-        {/* Critical resource preloading */}
-        <link rel="preload" as="image" href={coupleImage} />
-        <link rel="preload" as="image" href="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/dress+code.png" />
-        <link rel="preload" as="image" href="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/paleta+de+colores+2.jpg" />
+        {/* Critical resource preloading - only in production */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <link rel="preload" as="image" href={optimizeImageUrl(coupleImage, { quality: 90 })} />
+            <link rel="preload" as="image" href={optimizeImageUrl("https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/dress+code.png", { quality: 85 })} />
+            <link rel="preload" as="image" href={optimizeImageUrl("https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com/paleta+de+colores+2.jpg", { quality: 85 })} />
+          </>
+        )}
         
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//jgwedding-photo-videos.s3.us-east-2.amazonaws.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         
         {/* Preconnect to critical domains */}
         <link rel="preconnect" href="https://jgwedding-photo-videos.s3.us-east-2.amazonaws.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        
+        {/* Load critical font */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viaoda+Libre:wght@400&display=swap" />
         
         {/* Performance hints */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#8B4513" />
+        <meta name="format-detection" content="telephone=no" />
+        
+        {/* Resource hints for faster loading - only in production */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <link rel="modulepreload" href="/wedding/assets/index.js" />
+            <link rel="preload" href="/wedding/assets/index.css" as="style" />
+          </>
+        )}
       </Helmet>
 
             {/* Navigation */}
@@ -102,6 +140,9 @@ const HomePage = () => {
               coupleNames="Genesis & Jonathan"
               message="Prefiero compartir una sola vida contigo que enfrentar sin ti todas las edades de este mundo"
               imageSrc={coupleImage}
+            />
+            <ModernScrollIndicator 
+              text="Desliza para descubrir más"
             />
           </div>
           
