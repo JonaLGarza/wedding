@@ -226,6 +226,11 @@ const HomePage = () => {
                       name: "Hampton by Hilton Saltillo",
                       address: "Carr. Monterrey - Saltillo 6580, Sin Nombre de Col 25, 25270 Saltillo, Coah.",
                       phone: "8444504500"
+                    },
+                    {
+                      name: "Hoetel Nuvó",
+                      address: "Blvd. Luis Donaldo Colosio 1898, Residencial San Alberto, 25204 Saltillo, Coah.",
+                      phone: "8444850040"
                     }
                   ]}
                 />
